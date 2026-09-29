@@ -3,3 +3,17 @@
 
 
 
+
+
+
+
+!pip install pandas fiona shapely pyproj rtree 
+!pip install contextily
+!pip install geopandas
+!pip install topojson
+
+
+2+2
+
+
+
