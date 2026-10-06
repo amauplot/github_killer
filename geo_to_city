@@ -2,18 +2,6 @@
 
 
 
-
-
-
-
-
-!pip install pandas fiona shapely pyproj rtree 
-!pip install contextily
-!pip install geopandas
-!pip install topojson
-
-
-2+2
-
-
-
+import geopandas as gpd
+import contextily as ctx
+import matplotlib.pyplot as plt
