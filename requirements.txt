@@ -1,1 +1,7 @@
 
+#Pour la conversion des données géographiques des hôpitaux, et selon le tuto de Lino Galiana, il faut les packages : 
+pip install py7zr geopandas openpyxl tqdm s3fs PyYAML cartiflette 
+pip install pandas fiona shapely pyproj rtree contextily geopandas topojson
+
+à installer dans le terminal (?)
+
