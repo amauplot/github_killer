@@ -1,7 +1,0 @@
-#L'objectif est de transformer les données géographiques du document sur les hôpitaux en ville d'appartenance/département en s'aidant du document à ce sujet sur le site de Lino Galiana
-
-
-
-import geopandas as gpd
-import contextily as ctx
-import matplotlib.pyplot as plt
