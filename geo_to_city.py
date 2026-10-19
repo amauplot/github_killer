@@ -49,3 +49,7 @@ resultat['NOM_REGIO'] = resultat['INSEE_REG'].fillna(0).astype(int).map(dict_reg
 
 # 6.Affichage du résultat
 print(resultat[['name', 'the_geom', 'NOM_REGIO', 'INSEE_DEP', 'INSEE_COM']])
+
+#Le but sortir la base
+
+resultat.to_csv('resultat_regions.csv', encoding='utf-8')
