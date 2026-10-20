@@ -1,5 +1,5 @@
 #L'objectif est de transformer les données géographiques du document sur les hôpitaux en ville d'appartenance/département en s'aidant du document à ce sujet sur le site de Lino Galiana
-#Le code a l'air de fonctionner : il faudrait repasser dessus pour le nettoyer et être sûrs qu'il ne comporte pas d'erreur.
+#J'ai des problèmes sur le fait de bien sortir le fichier, vérifier?
 
 
 import os
@@ -29,6 +29,7 @@ telecharger(URL_APL, "data/raw/hospitals_point.csv")
 
 
 # 1. Importation du fichier sur les hôpitaux en format csv (pour celà il est dans l'environnement Onyxia : faudra améliorer l'appel et faire comme dans l'autre fichier en appelant depuis l'URL et seulement en back-up depuis le local).
+
 df = pd.read_csv("data/raw/hospitals_point.csv")
 
 #df = pd.read_csv('hospitals_point.csv')
@@ -77,7 +78,7 @@ print(resultat[['name', 'the_geom', 'NOM_REGIO', 'INSEE_DEP', 'COM_INSEE']])
 #Le but sortir la base
 
 
-resultat.to_csv('BASE_loc_hopitaux.csv', columns=['name', 'geometry', 'INSEE_DEP', 'COM_INSEE', 'STATUT', 'POPULATION', 'AREA','NOM_REGIO'], encoding='utf-8')
+resultat.to_csv('BASE_loc_hopitaux.csv', columns=['name', 'geometry', 'INSEE_DEP', 'COM_INSEE', 'NOM', 'STATUT', 'POPULATION', 'AREA','NOM_REGIO'], encoding='utf-8')
 
 #resultat.to_csv('resultat_regions.csv', encoding='utf-8')
 
@@ -87,5 +88,3 @@ resultat.to_csv('BASE_loc_hopitaux.csv', columns=['name', 'geometry', 'INSEE_DEP
 
 #Il faut encore nettoyer cette base (bcp de colonnes inutiles)
 #Il faut aussi harmoniser les noms (REG, DEP etc) pour que ça tourne bien avec les autres fichiers
-
-#COM
