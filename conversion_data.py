@@ -36,7 +36,7 @@ telecharger_et_extraire(URL_FILOSOFI, chemin_zip, dossier_extraction)
 # 2. Fonction générale pour convertir les données de la base FILOSOFI en tableau pandas exploitable
 def conversion_filosofi_pandas(geo_object, filosofi_measure):
     # Charger le fichier csv de la base FILOSOFI en sélectionnant les colonnes utiles
-    df = pd.read_csv(chemin_csv, sep=';', encoding='latin-1', usecols=[0, 1, 2, 8])
+    df = pd.read_csv(chemin_csv, sep=';', encoding='latin-1', usecols=[0, 1, 2, 8], dtype={0: str, 1: str, 2: str, 8: float})
     
     # Filtrer les données pour ne garder que les observations correspondantes
     df = df[df.iloc[:, 1] == geo_object]
