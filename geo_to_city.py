@@ -1,7 +1,12 @@
 #L'objectif est de transformer les données géographiques du document sur les hôpitaux en ville d'appartenance/département en s'aidant du document à ce sujet sur le site de Lino Galiana
 #Le code a l'air de fonctionner : il faudrait repasser dessus pour le nettoyer et être sûrs qu'il ne comporte pas d'erreur.
 
+
+import os
+import requests
 import pandas as pd
+import numpy as np
+import openpyxl
 import geopandas as gpd
 import contextily as ctx
 import matplotlib.pyplot as plt
@@ -9,18 +14,18 @@ from shapely.wkt import loads
 from cartiflette import carti_download
 
 
-#def telecharger(url, chemin):
- #   """Télécharge url et l'enregistre dans chemin (sans retélécharger si le fichier existe)."""
- #   if os.path.exists(chemin):
- #       return
-  #  os.makedirs(os.path.dirname(chemin), exist_ok=True)
- #   reponse = requests.get(url, timeout=60)
- #   reponse.raise_for_status()                 # erreur claire si le lien est mort
- #  with open(chemin, "wb") as f:
-  #      f.write(reponse.content)
+def telecharger(url, chemin):
+    """Télécharge url et l'enregistre dans chemin (sans retélécharger si le fichier existe)."""
+    if os.path.exists(chemin):
+        return
+    os.makedirs(os.path.dirname(chemin), exist_ok=True)
+    reponse = requests.get(url, timeout=60)
+    reponse.raise_for_status()                 # erreur claire si le lien est mort
+    with open(chemin, "wb") as f:
+        f.write(reponse.content)
 
-#URL_APL = "https://www.data.gouv.fr/api/1/datasets/r/c41a1919-fbd7-4d19-a8df-1719bef8b14a"
-#telecharger(URL_APL, "data/raw/hospitals_point.csv")
+URL_APL = "https://www.data.gouv.fr/api/1/datasets/r/c41a1919-fbd7-4d19-a8df-1719bef8b14a"
+telecharger(URL_APL, "data/raw/hospitals_point.csv")
 
 
 # 1. Importation du fichier sur les hôpitaux en format csv (pour celà il est dans l'environnement Onyxia : faudra améliorer l'appel et faire comme dans l'autre fichier en appelant depuis l'URL et seulement en back-up depuis le local).
@@ -72,7 +77,7 @@ print(resultat[['name', 'the_geom', 'NOM_REGIO', 'INSEE_DEP', 'COM_INSEE']])
 #Le but sortir la base
 
 
-resultat.to_csv('resultat_regions.csv', columns=['name', 'geometry', 'INSEE_DEP', 'COM_INSEE', 'STATUT', 'POPULATION', 'AREA','NOM_REGIO'], encoding='utf-8')
+resultat.to_csv('BASE_loc_hopitaux.csv', columns=['name', 'geometry', 'INSEE_DEP', 'COM_INSEE', 'STATUT', 'POPULATION', 'AREA','NOM_REGIO'], encoding='utf-8')
 
 #resultat.to_csv('resultat_regions.csv', encoding='utf-8')
 
