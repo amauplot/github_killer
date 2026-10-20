@@ -50,7 +50,7 @@ def conversion_filosofi_pandas(geo_object, filosofi_measure):
 
 
 # 3. Appel de la fonction avec 'COM' et 'MED_SL'
-df_resultat = conversion_filosofi_pandas('COM', 'MED_SL')
+df_commune_revenu_median = conversion_filosofi_pandas('COM', 'MED_SL')
 
 # Affichage des premières lignes du résultat
-print(df_resultat.head())
+print(df_commune_revenu_median.head())
