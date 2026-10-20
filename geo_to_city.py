@@ -76,7 +76,16 @@ resultat = resultat.rename(columns={'INSEE_COM': 'COM_INSEE'})
 print(resultat[['name', 'the_geom', 'NOM_REGIO', 'INSEE_DEP', 'COM_INSEE']])
 
 #Le but sortir la base
+#mettre au bon format pour la jointure (il y avait des problèmes d'uniformité)
+# 1. Traitement de INSEE_DEP (remplace les NaN par une chaîne vide '', sinon formate sur 2 chiffres) => car les NA posait pbm
+dep_numeric = pd.to_numeric(resultat['INSEE_DEP'], errors='coerce')
+resultat['INSEE_DEP'] = dep_numeric.dropna().astype(int).astype(str).str.zfill(2)
+resultat['INSEE_DEP'] = resultat['INSEE_DEP'].fillna('')
 
+# 2. Traitement de COM_INSEE (remplace les NaN par une chaîne vide '', sinon formate sur 5 chiffres)
+com_numeric = pd.to_numeric(resultat['COM_INSEE'], errors='coerce')
+resultat['COM_INSEE'] = com_numeric.dropna().astype(int).astype(str).str.zfill(5)
+resultat['COM_INSEE'] = resultat['COM_INSEE'].fillna('')
 
 resultat.to_csv('BASE_loc_hopitaux.csv', columns=['name', 'geometry', 'INSEE_DEP', 'COM_INSEE', 'NOM', 'STATUT', 'POPULATION', 'AREA','NOM_REGIO'], encoding='utf-8')
 

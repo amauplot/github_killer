@@ -218,11 +218,11 @@
 216,Soins de Suite et de Réadaptation Les Claveries,POINT (-0.5041185590196519 47.48748084017028),49,49267,Saint-Barthélemy-d'Anjou,Commune simple,9210.0,metropole,Pays de la Loire
 217,Centre hospitalier de La Rochelle,POINT (-1.143705623888321 46.15974570561817),17,17300,La Rochelle,Préfecture,77205.0,metropole,Nouvelle-Aquitaine
 218,Hôpital Léon Bérard,POINT (6.0173846 46.532551800252236),39,39368,Hauts de Bienne,Commune simple,5275.0,metropole,Bourgogne-Franche-Comté
-219,Centre hospitalier d'Ajaccio,POINT (8.770073288277182 41.94482287611651),2A,2A004,Ajaccio,Préfecture de région,71361.0,metropole,Corse
+219,Centre hospitalier d'Ajaccio,POINT (8.770073288277182 41.94482287611651),,,Ajaccio,Préfecture de région,71361.0,metropole,Corse
 220,Centre hospitalier Princesse Grace (CHPG),POINT (7.411060167788115 43.73032300302562),,,,,,,
 221,ESEAN,POINT (-1.524468686019599 47.18571954565439),44,44109,Nantes,Préfecture de région,318808.0,metropole,Pays de la Loire
 222,Centre de Long Séjour Bellevaux,POINT (6.022431091135575 47.24247950961953),25,25056,Besançon,Préfecture,117912.0,metropole,Bourgogne-Franche-Comté
-223,Clinique de l'Ospedale,POINT (9.276833774421394 41.59876359656681),2A,2A247,Porto-Vecchio,Commune simple,11132.0,metropole,Corse
+223,Clinique de l'Ospedale,POINT (9.276833774421394 41.59876359656681),,,Porto-Vecchio,Commune simple,11132.0,metropole,Corse
 224,Laborieux Hervé ostéopathe DO,POINT (-1.7729769928875525 46.5373836674343),85,85194,Les Sables-d'Olonne,Sous-préfecture,45030.0,metropole,Pays de la Loire
 225,Centre hospitalier Louis Brunet,POINT (5.470394366309298 43.334971874021),13,13002,Allauch,Commune simple,21372.0,metropole,Provence-Alpes-Côte d'Azur
 226,USLD Bellevaux,POINT (6.022307799999999 47.242433900110285),25,25056,Besançon,Préfecture,117912.0,metropole,Bourgogne-Franche-Comté
@@ -324,7 +324,7 @@
 322,Clinique de l'Iroise,POINT (-4.502754489826544 48.43635959078877),29,29011,Bohars,Commune simple,3530.0,metropole,Bretagne
 323,Centre médico-psychologique Adultes de Saint-Julien-en-Genevois,POINT (6.076735320029925 46.1445462398167),74,74243,Saint-Julien-en-Genevois,Sous-préfecture,15873.0,metropole,Auvergne-Rhône-Alpes
 324,Centre Hospitalier de Bourbonne les Bains,POINT (5.73527963000561 47.946295929828786),52,52060,Bourbonne-les-Bains,Commune simple,1977.0,metropole,Grand Est
-325,Centre Hospitalier Intercommunal Corte Tattone,POINT (9.154329467480585 42.301873053339555),2B,2B096,Corte,Sous-préfecture,7485.0,metropole,Corse
+325,Centre Hospitalier Intercommunal Corte Tattone,POINT (9.154329467480585 42.301873053339555),,,Corte,Sous-préfecture,7485.0,metropole,Corse
 326,Hôpital de Houdan,POINT (1.5991250583064351 48.79354671357498),78,78310,Houdan,Commune simple,3671.0,metropole,Île-de-France
 327,Centre Hospitalier Nozay,POINT (-1.6257071054983714 47.56171956316637),44,44113,Nozay,Commune simple,4195.0,metropole,Pays de la Loire
 328,Hôpital de Jour Henri Ey,POINT (3.0748769159172684 45.779096434511466),63,63113,Clermont-Ferrand,Préfecture,147865.0,metropole,Auvergne-Rhône-Alpes
@@ -587,7 +587,7 @@
 585,,POINT (1.2818053534845053 45.81469067902499),87,87085,Limoges,Préfecture,130876.0,metropole,Nouvelle-Aquitaine
 586,Centre hospitalier de Saint-Céré,POINT (1.8877215959099065 44.86268806045101),46,46251,Saint-Céré,Commune simple,3414.0,metropole,Occitanie
 587,Maison de Santé Pluriprofessionnelle 6FourSanté,POINT (5.814285414781921 43.10605338105291),83,83129,Six-Fours-les-Plages,Commune simple,34592.0,metropole,Provence-Alpes-Côte d'Azur
-588,Centre hospitalier de Calvi-Balagne,POINT (8.765543403362239 42.54826114144441),2B,2B050,Calvi,Sous-préfecture,5774.0,metropole,Corse
+588,Centre hospitalier de Calvi-Balagne,POINT (8.765543403362239 42.54826114144441),,,Calvi,Sous-préfecture,5774.0,metropole,Corse
 589,Centre hospitalier du Forez,POINT (4.221671883889005 45.74597054991279),42,42094,Feurs,Commune simple,8302.0,metropole,Auvergne-Rhône-Alpes
 590,Centre hospitalier de Montfort,POINT (-1.9519129045072745 48.13769933383375),35,35188,Montfort-sur-Meu,Commune simple,6726.0,metropole,Bretagne
 591,Hôpital de la Tauvrais,POINT (-1.6605532491962558 48.13782253511994),35,35238,Rennes,Préfecture de région,220488.0,metropole,Bretagne
@@ -707,7 +707,7 @@
 705,Centre de Soins et d'Accompagnement et de Prévention en Addictologie,POINT (3.04523743787227 50.6192756222705),59,59350,Lille,Préfecture de région,234475.0,metropole,Hauts-de-France
 706,Hôpital Antoine Béclère,POINT (2.255396539583205 48.78866827048066),92,92023,Clamart,Commune simple,52925.0,metropole,Île-de-France
 707,Clinique Francheville,POINT (0.717508863691511 45.181350447425196),24,24322,Périgueux,Préfecture,29896.0,metropole,Nouvelle-Aquitaine
-708,Centre Hospitalier de Sartène,POINT (8.935535409969054 41.60635709830757),2A,2A272,Sartène,Sous-préfecture,3248.0,metropole,Corse
+708,Centre Hospitalier de Sartène,POINT (8.935535409969054 41.60635709830757),,,Sartène,Sous-préfecture,3248.0,metropole,Corse
 709,Centre de Réhabilitation Thérapeutique (CRT) Dinan,POINT (-2.0580671 48.44623919982943),22,22050,Dinan,Sous-préfecture,14407.0,metropole,Bretagne
 710,Pôle Saint-Hélier,POINT (-1.6698036307258697 48.106089202563254),35,35238,Rennes,Préfecture de région,220488.0,metropole,Bretagne
 711,Hôpital Taillegrain - Centre de gérontologie des Prés Fichaux,POINT (2.397193527003614 47.093026330702024),18,18033,Bourges,Préfecture,64541.0,metropole,Centre-Val de Loire
@@ -1075,7 +1075,7 @@
 1073,Hôpital Pierre Grouès,POINT (6.649539539431835 44.387782723380155),04,04019,Barcelonnette,Sous-préfecture,2564.0,metropole,Provence-Alpes-Côte d'Azur
 1074,Établissement Public de Santé de Ville-Evrard,POINT (2.548464493662101 48.86053689862941),93,93050,Neuilly-sur-Marne,Commune simple,35907.0,metropole,Île-de-France
 1075,Unité de Soins Longue Durée La Chênaie,POINT (6.091668687641047 47.83842080096221),70,70472,Saint-Rémy-en-Comté,Commune simple,485.0,metropole,Bourgogne-Franche-Comté
-1076,Centre hospitalier de Bonifacio,POINT (9.163476709179138 41.39934906296478),2A,2A041,Bonifacio,Commune simple,3192.0,metropole,Corse
+1076,Centre hospitalier de Bonifacio,POINT (9.163476709179138 41.39934906296478),,,Bonifacio,Commune simple,3192.0,metropole,Corse
 1077,Hôpital Alexandre Millerand,POINT (7.7218052 48.730261299759235),67,67067,Brumath,Commune simple,10081.0,metropole,Grand Est
 1078,Clinique de la Côte d’Émeraude,POINT (-1.9831958379345396 48.625707380746846),35,35288,Saint-Malo,Sous-préfecture,46803.0,metropole,Bretagne
 1079,Centre Hospitalier Intercommunal Monts et Barrages,POINT (1.4833999751655045 45.84174287378218),87,87161,Saint-Léonard-de-Noblat,Commune simple,4385.0,metropole,Nouvelle-Aquitaine
@@ -1624,7 +1624,7 @@
 1622,USLD Les Patios d'Argent,POINT (2.6511006308055842 42.46374206496136),66,66009,Arles-sur-Tech,Commune simple,2724.0,metropole,Occitanie
 1623,Clinique du docteur STER,POINT (3.833089911171813 43.70944044368252),34,34247,Saint-Clément-de-Rivière,Commune simple,5016.0,metropole,Occitanie
 1624,La Clairière,POINT (2.7394945129694253 50.744226347423044),59,59043,Bailleul,Commune simple,15163.0,metropole,Hauts-de-France
-1625,Centre Hospitalier Spécialisé de Castelluccio,POINT (8.714440680156029 41.93546822001223),2A,2A004,Ajaccio,Préfecture de région,71361.0,metropole,Corse
+1625,Centre Hospitalier Spécialisé de Castelluccio,POINT (8.714440680156029 41.93546822001223),,,Ajaccio,Préfecture de région,71361.0,metropole,Corse
 1626,Hôpital de Jour MGEN,POINT (1.089041 49.44847449958222),76,76540,Rouen,Préfecture de région,112321.0,metropole,Normandie
 1627,Groupe hospitalier Carnelle Porte de l'Oise - Site de Beaumont,POINT (2.290398603760527 49.14482919950031),95,95052,Beaumont-sur-Oise,Commune simple,9504.0,metropole,Île-de-France
 1628,Hopital de St Bonnet le Château,POINT (4.0669192999999995 45.424659700422154),42,42204,Saint-Bonnet-le-Château,Commune simple,1510.0,metropole,Auvergne-Rhône-Alpes
@@ -1757,7 +1757,7 @@
 1755,Centre Hospitalier George Sand,POINT (2.5755700999999998 46.886790700184214),18,18087,Dun-sur-Auron,Commune simple,3655.0,metropole,Centre-Val de Loire
 1756,Clinique du Pré,POINT (0.1636171247814852 48.01899108917823),72,72181,Le Mans,Préfecture,143847.0,metropole,Pays de la Loire
 1757,Clinique Princess,POINT (-0.3487199183974051 43.323777974912154),64,64445,Pau,Préfecture,75627.0,metropole,Nouvelle-Aquitaine
-1758,Centre d'Imagerie De La Plaine Orientale,POINT (9.401383422318986 41.991413121498354),2B,2B251,Prunelli-di-Fiumorbo,Commune simple,3667.0,metropole,Corse
+1758,Centre d'Imagerie De La Plaine Orientale,POINT (9.401383422318986 41.991413121498354),,,Prunelli-di-Fiumorbo,Commune simple,3667.0,metropole,Corse
 1759,PEJ Point Ecoute Jeune,POINT (6.582090444989447 46.0612250438805),74,74081,Cluses,Commune simple,16918.0,metropole,Auvergne-Rhône-Alpes
 1760,Centre hospitalier de Troyes,POINT (4.069588102057444 48.27834152888386),10,10387,Troyes,Préfecture,61957.0,metropole,Grand Est
 1761,Hôpital Gabriel Montpied,POINT (3.091585391596665 45.75749679364943),63,63113,Clermont-Ferrand,Préfecture,147865.0,metropole,Auvergne-Rhône-Alpes
@@ -2150,7 +2150,7 @@
 2148,Centre hospitalier de Lanmeur,POINT (-3.709271852730813 48.64707155769643),29,29113,Lanmeur,Commune simple,2362.0,metropole,Bretagne
 2149,Clinique du Sud,POINT (2.3917200205398763 43.21996547095721),11,11069,Carcassonne,Préfecture,46825.0,metropole,Occitanie
 2150,,POINT (6.190461299999999 49.10523519966632),57,57463,Metz,Préfecture,118489.0,metropole,Grand Est
-2151,Centre hospitalier de Bastia,POINT (9.427386826842117 42.681588260869525),2B,2B033,Bastia,Préfecture,48503.0,metropole,Corse
+2151,Centre hospitalier de Bastia,POINT (9.427386826842117 42.681588260869525),,,Bastia,Préfecture,48503.0,metropole,Corse
 2152,Centre Catalan d'Oncologie,POINT (2.8643544901808315 42.69546895257776),66,66136,Perpignan,Préfecture,119344.0,metropole,Occitanie
 2153,Polyclinique du Parc,POINT (3.551108082765017 50.37347380032865),59,59544,Saint-Saulve,Commune simple,11276.0,metropole,Hauts-de-France
 2154,Hopital,POINT (2.094478 49.064325199676404),95,95500,Pontoise,Préfecture,32405.0,metropole,Île-de-France
@@ -2268,7 +2268,7 @@
 2266,Hopital d'Auxonne,POINT (5.385249516107282 47.192070118977746),21,21038,Auxonne,Commune simple,7614.0,metropole,Bourgogne-Franche-Comté
 2267,Hôpital Dupuytren,POINT (2.4130012535731638 48.67609046053006),91,91201,Draveil,Commune simple,28602.0,metropole,Île-de-France
 2268,Clinique La Marette,POINT (2.127776818310165 48.35639439452203),91,91533,Saclas,Commune simple,1859.0,metropole,Île-de-France
-2269,Clinisud,POINT (8.735134148416606 41.92364336526226),2A,2A004,Ajaccio,Préfecture de région,71361.0,metropole,Corse
+2269,Clinisud,POINT (8.735134148416606 41.92364336526226),,,Ajaccio,Préfecture de région,71361.0,metropole,Corse
 2270,Centre hospitalier de Montauban,POINT (1.3509533475001478 44.02306448347082),82,82121,Montauban,Préfecture,61372.0,metropole,Occitanie
 2271,Centre d’action médico-sociale Précoce,POINT (4.804412475459007 43.921658320478016),84,84007,Avignon,Préfecture,91143.0,metropole,Provence-Alpes-Côte d'Azur
 2272,Centre hospitalier Ardèche Nord,POINT (4.665228132648163 45.24193927949988),07,07010,Annonay,Commune simple,16297.0,metropole,Auvergne-Rhône-Alpes
