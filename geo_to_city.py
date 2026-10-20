@@ -8,8 +8,25 @@ import matplotlib.pyplot as plt
 from shapely.wkt import loads
 from cartiflette import carti_download
 
+
+#def telecharger(url, chemin):
+ #   """Télécharge url et l'enregistre dans chemin (sans retélécharger si le fichier existe)."""
+ #   if os.path.exists(chemin):
+ #       return
+  #  os.makedirs(os.path.dirname(chemin), exist_ok=True)
+ #   reponse = requests.get(url, timeout=60)
+ #   reponse.raise_for_status()                 # erreur claire si le lien est mort
+ #  with open(chemin, "wb") as f:
+  #      f.write(reponse.content)
+
+#URL_APL = "https://www.data.gouv.fr/api/1/datasets/r/c41a1919-fbd7-4d19-a8df-1719bef8b14a"
+#telecharger(URL_APL, "data/raw/hospitals_point.csv")
+
+
 # 1. Importation du fichier sur les hôpitaux en format csv (pour celà il est dans l'environnement Onyxia : faudra améliorer l'appel et faire comme dans l'autre fichier en appelant depuis l'URL et seulement en back-up depuis le local).
-df = pd.read_csv('hospitals_point.csv')
+df = pd.read_csv("data/raw/hospitals_point.csv")
+
+#df = pd.read_csv('hospitals_point.csv')
 
 
 # 2. Conversion du tableau Pandas en GeoDataFrame
@@ -47,8 +64,10 @@ dict_regions = {
 # 5. Je remplace les codes région INSEE par leurs noms
 resultat['NOM_REGIO'] = resultat['INSEE_REG'].fillna(0).astype(int).map(dict_regions)
 
+resultat = resultat.rename(columns={'INSEE_COM': 'COM_INSEE'})
+
 # 6.Affichage du résultat
-print(resultat[['name', 'the_geom', 'NOM_REGIO', 'INSEE_DEP', 'INSEE_COM']])
+print(resultat[['name', 'the_geom', 'NOM_REGIO', 'INSEE_DEP', 'COM_INSEE']])
 
 #Le but sortir la base
 
@@ -56,3 +75,5 @@ resultat.to_csv('resultat_regions.csv', encoding='utf-8')
 
 #Il faut encore nettoyer cette base (bcp de colonnes inutiles)
 #Il faut aussi harmoniser les noms (REG, DEP etc) pour que ça tourne bien avec les autres fichiers
+
+#COM
