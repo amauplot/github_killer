@@ -14,3 +14,5 @@ df = pd.merge(df, hop, on="COM_INSEE", how="left", suffixes=("", "_hop"))
 
 print(len(df_commune_revenu_median), len(df))
 print(df.head())
+
+df.to_excel(RACINE / "data/processed/df_final.xlsx", index=False)
