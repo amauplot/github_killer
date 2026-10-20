@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from shapely.wkt import loads
 from cartiflette import carti_download
 
-# 1. Importation du fichier sur les hôpitaux en format csv (pour celà il est dans l'environnement Onyxia).
+# 1. Importation du fichier sur les hôpitaux en format csv (pour celà il est dans l'environnement Onyxia : faudra améliorer l'appel et faire comme dans l'autre fichier en appelant depuis l'URL et seulement en back-up depuis le local).
 df = pd.read_csv('hospitals_point.csv')
 
 
@@ -53,3 +53,6 @@ print(resultat[['name', 'the_geom', 'NOM_REGIO', 'INSEE_DEP', 'INSEE_COM']])
 #Le but sortir la base
 
 resultat.to_csv('resultat_regions.csv', encoding='utf-8')
+
+#Il faut encore nettoyer cette base (bcp de colonnes inutiles)
+#Il faut aussi harmoniser les noms (REG, DEP etc) pour que ça tourne bien avec les autres fichiers
