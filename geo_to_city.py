@@ -71,7 +71,14 @@ print(resultat[['name', 'the_geom', 'NOM_REGIO', 'INSEE_DEP', 'COM_INSEE']])
 
 #Le but sortir la base
 
-resultat.to_csv('resultat_regions.csv', encoding='utf-8')
+
+resultat.to_csv('resultat_regions.csv', columns=['name', 'geometry', 'INSEE_DEP', 'COM_INSEE', 'STATUT', 'POPULATION', 'AREA','NOM_REGIO'], encoding='utf-8')
+
+#resultat.to_csv('resultat_regions.csv', encoding='utf-8')
+
+
+
+
 
 #Il faut encore nettoyer cette base (bcp de colonnes inutiles)
 #Il faut aussi harmoniser les noms (REG, DEP etc) pour que ça tourne bien avec les autres fichiers
