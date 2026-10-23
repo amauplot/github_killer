@@ -5,6 +5,7 @@ from conversion_data import conversion_filosofi_pandas
 RACINE = Path(__file__).resolve().parent
 
 df_commune_revenu_median = conversion_filosofi_pandas('COM', 'MED_SL')
+df_commune_revenu_median.rename(columns={df_commune_revenu_median.columns[0]: 'COM_INSEE', df_commune_revenu_median.columns[3]: 'revenu_median'}, inplace=True)
 
 apl_fin = pd.read_csv(RACINE / "data/processed/apl_fin.csv", dtype={"COM_INSEE": str})
 hop = pd.read_csv(RACINE / "BASE_loc_hopitaux.csv", dtype={"COM_INSEE": str})
