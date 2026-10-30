@@ -111,3 +111,23 @@ resultat['COM_INSEE'] = resultat['COM_INSEE'].fillna('')
 #9- Exportation du résultat en csv (il s'agit d'une version synthétique de la base, possible d'importer plus ou moins de colonnes)
 resultat.to_csv('BASE_loc_hopitaux.csv', columns=['name', 'geometry', 'INSEE_DEP', 'COM_INSEE', 'NOM', 'STATUT', 'POPULATION', 'AREA','NOM_REGIO'], encoding='utf-8')
 
+
+
+
+#10- nombre d'hôpitaux par régions
+
+counts = resultat['NOM_REGIO'].value_counts()
+
+#Calcul du pourcentage (normalize=True multiplié par 100)
+percentages = resultat['NOM_REGIO'].value_counts(normalize=True) * 100
+
+# Combinaison des deux dans un seul tableau propre
+classement_regions = pd.DataFrame({
+    'Nombre': counts,
+    'Pourcentage (%)': percentages.round(2)
+})
+
+# Affichage du résultat
+print(classement_regions)
+
+#Ce tableau me fait poser la Q des dom tom mais je laisse ça à Malo qui s'occupe + de ça
