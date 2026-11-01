@@ -1,5 +1,4 @@
 
-
 #L'objectif est de transformer les coordonnées géographiques relatives aux hôpitaux en villes d'appartenance, département d'appartenance et région d'appartenance.
 #L'article de Lino Galiana Introduction aux données spatiales avec Geopandas a été utilisé comme point de référence
 
