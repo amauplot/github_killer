@@ -4,7 +4,7 @@
 
 #PBMS persistants
 #Les DOM TOM : je n'ai pas réussi à les mettre, revenir au tableau initial pour voir si la donnée n'était pas là où si elle s'est perdue
-#Frontières des villes corses 
+#Frontières des villes corses  : résolu
 
 #0- Téléchargement des packages nécessaires
 import folium # à installer (permet la création d'une carte interactive)
@@ -43,15 +43,41 @@ gdf_france = carti_download(
 
 # 3- Préparation, sachant que pour la Corse dans ma base je ne peux pas passer par le code Insee, donc je retiens les cas où la région est la Corse
 
-gdf_communes["REGION_CLE"] = gdf_communes.get("NOM_REGIO")
+# A. Cas général (hors Corse) : correspondance directe par code INSEE
+condition_insee = gdf_communes["INSEE_COM"].isin(hop["COM_INSEE"])
 
-condition_corse = gdf_communes["REGION_CLE"] == "Corse" #renvoie TRUE si la ville est en Corse => je les repère pour proposer une gestion meilleure après
-condition_insee = gdf_communes["INSEE_COM"].isin(hop["COM_INSEE"]) #on compare les données issues de cartiflette à ma base. Pour chaque commune de cartiflette qui est aussi présente dans ma base hôpital elle renvoie TRUE
+# B. Cas de la Corse : repérage des communes contenant un point GPS d'hôpital
+hop_corse = hop[hop["NOM_REGIO"] == "Corse"].copy()
 
-gdf_selection = gdf_communes[condition_corse | condition_insee] #j'ai un tableau avec toutes les villes en corse OU qui ont un hôpital, ie celles sur lesquelles je vais travailler après
-#PROBLEME : du coup les villes corse après j'ai pas leur frontière, à voir
-union_communes = unary_union(gdf_selection.geometry) #si plusieurs
+if not hop_corse.empty:
+    # Conversion du texte WKT en géométrie GeoPandas (CRS 4326)
+    hop_corse["geometry"] = hop_corse["geometry"].apply(loads)
+    gdf_hop_corse = gpd.GeoDataFrame(hop_corse, geometry="geometry", crs=4326)
+
+    # On filtre Cartiflette sur la Corse via les codes INSEE commençant par 2A ou 2B
+    gdf_communes_corse = gdf_communes[gdf_communes["INSEE_COM"].str.startswith(("2A", "2B"))]
+
+    # Jointure spatiale : trouve dans quelle commune tombe chaque hôpital corse
+    communes_corse_avec_hop = gpd.sjoin(
+        gdf_communes_corse, 
+        gdf_hop_corse, 
+        how="inner", 
+        predicate="contains"
+    )
+    
+    # Liste des vrais codes INSEE (2A... / 2B...) des communes corses ayant un hôpital
+    codes_insee_corse_hop = communes_corse_avec_hop["INSEE_COM"].unique()
+    condition_corse = gdf_communes["INSEE_COM"].isin(codes_insee_corse_hop)
+else:
+    condition_corse = pd.Series(False, index=gdf_communes.index)
+
+# C. Sélection finale : uniquement les communes qui ont un hôpital (Corse incluse)
+gdf_selection = gdf_communes[condition_corse | condition_insee].copy()
+
+# Fusion des géométries uniquement pour tracer le contour extérieur global
+union_communes = unary_union(gdf_selection.geometry)
 gdf_selection_fusionnee = gpd.GeoDataFrame(geometry=[union_communes], crs=gdf_communes.crs)
+
 
 
 # 4- Préparation du fond de carte
@@ -59,15 +85,83 @@ gdf_selection_fusionnee = gpd.GeoDataFrame(geometry=[union_communes], crs=gdf_co
 m = folium.Map(location=[46.603354, 1.888334], zoom_start=6, tiles=None) #centre la carte sur la france, zoom initial et fond vide
 
 # 5- Carte en blanc, ville en rouge
+
+# Je voudrais que sur la carte les villes aient une couleur liée au revenu médian donné par la base suivante :
+df_final = pd.read_excel(RACINE / "data/processed/df_final.xlsx", dtype={"COM_INSEE": str})
+
+import branca.colormap as cm
+
+# Nettoyage au cas où il y aurait des valeurs manquantes dans la colonne revenu
+df_revenus_valides = df_final.dropna(subset=["COM_INSEE", "revenu_median"])
+
+# Création du dictionnaire {code_insee: revenu_median}
+dict_revenus = df_revenus_valides.set_index("COM_INSEE")["revenu_median"].to_dict()
+
+
+# On borne l'échelle entre le 10e et le 90e centile pour éviter que les extrêmes n'écrasent les couleurs 
+revenu_min = df_revenus_valides["revenu_median"].quantile(0.10)
+revenu_max = df_revenus_valides["revenu_median"].quantile(0.90)
+
+colormap = cm.LinearColormap(
+    colors=["blue", "white", "red"], 
+    vmin=revenu_min,
+    vmax=revenu_max,
+    caption="Revenu médian par ville (€) - échelle 10e-90e centiles"
+)
+
+
+
+
+# Fonctions de style
 def style_france_blanc(feature):
     return {"fillColor": "#FFFFFF", "fillOpacity": 1.0, "color": "#D3D3D3", "weight": 1}
 
-def style_commune_rouge(feature):
-    return {"fillColor": "#FF0000", "fillOpacity": 0.4, "color": "#FF0000", "weight": 2}
+def style_commune_revenu(feature):
+    # Cartiflette stocke le code commune sous "INSEE_COM"
+    code_insee = feature["properties"].get("INSEE_COM")
+    revenu = dict_revenus.get(code_insee)
 
-# 6- Ajout des couches préparées (une fond france et une venant des données fusionnées)
+    if revenu is not None and pd.notna(revenu):
+        couleur = colormap(revenu)
+        opacite = 0.75
+    else:
+        # Couleur gris si la commune n'a pas de revenu renseigné (ex: certaines communes corses) => rendre ça plus clair
+        couleur = "#E0E0E0"
+        opacite = 1
+
+    return {
+        "fillColor": couleur,
+        "fillOpacity": opacite,
+        "color": couleur, # Même couleur que le fond pour éviter les traits entre villes voisines
+        "weight": 0.5
+    }
+
+def style_contour_exterieur(feature):
+    return {"fill": False, "color": "#333333", "weight": 1.5}
+
+
+# 6- Ajout des couches sur la carte
+# Fond France
 folium.GeoJson(gdf_france, style_function=style_france_blanc, name="Fond France").add_to(m)
-folium.GeoJson(gdf_selection_fusionnee, style_function=style_commune_rouge, name="Zones Hôpitaux").add_to(m)
+
+# Couche des villes colorées individuellement selon le revenu médian
+folium.GeoJson(
+    gdf_selection, 
+    style_function=style_commune_revenu, 
+    name="Revenu médian des communes"
+).add_to(m)
+
+# Contour global autour des zones fusionnées
+folium.GeoJson(
+    gdf_selection_fusionnee, 
+    style_function=style_contour_exterieur, 
+    name="Contours des zones"
+).add_to(m)
+
+# Ajout de la légende des couleurs sur la carte
+colormap.add_to(m)
+
+
 
 
 # 7- Ajout du marqueur des villes avec des hôpitaux
@@ -117,6 +211,3 @@ for index, row in hop.iterrows(): #parcoure hop, ligne par ligne
 # 8. Sauvegarde de la carte
 m.save(RACINE / "data/processed/carte_france_villes_hop.html")
 print("Fait ! La carte a été générée avec succès.")
-
-# Il faut télécharger le fochier html et en l'ouvrant on arrive sur une page web où on peut naviguer sur cette carte. 
-# Le problème est que les DOM TOM sont vides (voir si ça vient de la base ou de son traitement) et que la Corse est pas remplie comme je voudrai
