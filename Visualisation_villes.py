@@ -5,8 +5,9 @@
 #PBMS persistants
 #Les DOM TOM : je n'ai pas réussi à les mettre, revenir au tableau initial pour voir si la donnée n'était pas là où si elle s'est perdue
 #Frontières des villes corses  : résolu
-
+#IDEE : déformer la limites des vilels (agrandir) pour que le revenu médian se voit de plus loin OU conditionner aussi la couleur du point)
 #0- Téléchargement des packages nécessaires
+
 import folium # à installer (permet la création d'une carte interactive)
 import geopandas as gpd
 import pandas as pd
