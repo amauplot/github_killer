@@ -115,7 +115,7 @@ for index, row in hop.iterrows(): #parcoure hop, ligne par ligne
 
 
 # 8. Sauvegarde de la carte
-m.save("carte_france_blanche_rouge.html")
+m.save(RACINE / "data/processed/carte_france_villes_hop.html")
 print("Fait ! La carte a été générée avec succès.")
 
 # Il faut télécharger le fochier html et en l'ouvrant on arrive sur une page web où on peut naviguer sur cette carte. 
