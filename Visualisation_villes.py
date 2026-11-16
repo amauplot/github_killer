@@ -200,8 +200,8 @@ for index, row in hop.iterrows(): #parcoure hop, ligne par ligne
         commune_geo = gdf_communes[gdf_communes["INSEE_COM"] == code_insee]
         
         if not commune_geo.empty:
-            centroid = commune_geo.geometry.iloc[0].centroid
-            lat, lon = centroid.y, centroid.x
+            point_centre = commune_geo.geometry.iloc[0].representative_point()
+            lat, lon = point_centre.y, point_centre.x
             nom_affichage = dict_noms.get(code_insee, "Commune hôpital")
         else:
             continue
