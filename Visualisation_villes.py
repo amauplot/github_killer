@@ -3,8 +3,8 @@
 #Cette première visualisation est purement indicative (elle ne tient pas compte de la densité de population, des axes de transports, etc)
 
 #Limites
-#Les DOM TOM : Absents de la base de données initiales
-#IDEE : déformer la limites des villes (agrandir) pour que le revenu médian se voit de plus loin OU conditionner aussi la couleur du point)
+#Les DOM TOM : Absents de la base de données initiale
+
 #0- Téléchargement des packages nécessaires
 
 import folium # à installer (permet la création d'une carte interactive)
@@ -206,17 +206,20 @@ for index, row in hop.iterrows(): #parcoure hop, ligne par ligne
         else:
             continue
 
-#dessin du marqueur sur la carte
+#dessin du marqueur sur la carte : on récupère le revenu pour colorer aussi le point (pour qu'il se voie de loin sur les petites communes)
+    revenu = dict_revenus.get(code_insee)
+    couleur_point = colormap(revenu) if (revenu is not None and pd.notna(revenu)) else "#808080"
+
     folium.CircleMarker(
         location=[lat, lon],
-        radius=4,
-        color="darkred",
+        radius=4, # Légèrement plus grand pour être visible de loin
+        color="#333333", # Bordure fine sombre pour faire ressortir le point
+        weight=1,
         fill=True,
-        fill_color="black",
-        fill_opacity=1,
-        popup=nom_affichage,
+        fill_color=couleur_point,
+        fill_opacity=0.9,
+        popup=f"{nom_affichage} ({int(revenu)} €)" if pd.notna(revenu) else nom_affichage,
     ).add_to(m)
-
 
 # 8. Sauvegarde de la carte
 m.save(RACINE / "data/processed/carte_france_villes_hop.html")
