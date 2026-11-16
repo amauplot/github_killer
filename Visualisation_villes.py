@@ -2,10 +2,9 @@
 #L'objectif de ce fichier est de produire une carte de France sur laquelle les communes contenant au moins un hôpital sont en rouge.
 #Cette première visualisation est purement indicative (elle ne tient pas compte de la densité de population, des axes de transports, etc)
 
-#PBMS persistants
-#Les DOM TOM : je n'ai pas réussi à les mettre, revenir au tableau initial pour voir si la donnée n'était pas là où si elle s'est perdue
-#Frontières des villes corses  : résolu
-#IDEE : déformer la limites des vilels (agrandir) pour que le revenu médian se voit de plus loin OU conditionner aussi la couleur du point)
+#Limites
+#Les DOM TOM : Absents de la base de données initiales
+#IDEE : déformer la limites des villes (agrandir) pour que le revenu médian se voit de plus loin OU conditionner aussi la couleur du point)
 #0- Téléchargement des packages nécessaires
 
 import folium # à installer (permet la création d'une carte interactive)
@@ -23,23 +22,33 @@ hop = pd.read_csv(RACINE / "BASE_loc_hopitaux.csv", dtype={"COM_INSEE": str})
 
 # 2. Chargement des fonds de carte via CARTIFLETTE
 # Contours de toutes les communes de France
+
 print("Téléchargement des communes...")
 gdf_communes = carti_download(
     values="France",
     borders="COMMUNE",
     filter_by="FRANCE_ENTIERE_DROM_RAPPROCHES",
-    simplification=50, # Allège le produit fini qu'on aura sur Folium
-    crs=4326           # Coordonnées standard 
+    simplification=50,
+    crs=4326
 )
-# Silhouette nationale 
+
 print("Téléchargement du contour France...")
 gdf_france = carti_download(
     values="France",
-    borders="REGION", #on prend par région pour avoir leur frontières après sur la carte
+    borders="REGION",
     filter_by="FRANCE_ENTIERE_DROM_RAPPROCHES",
     simplification=50,
     crs=4326
 )
+
+
+# On retire les communes des DROM (codes INSEE commençant par 97) car la base de données utilisées ne les mobilisent pas
+#On pourrait ne pas prendre FRANCE_ENTIERE_DROM_RAPPROCHES mais alors on n'aurait pas l'Île-de-France mise en valeur d'où ce choix
+gdf_communes = gdf_communes[~gdf_communes["INSEE_COM"].str.startswith("97")].copy()
+
+# On retire les contours des régions d'outre-mer (codes 01, 02, 03, 04, 06)
+regions_drom = ["01", "02", "03", "04", "06"]
+gdf_france = gdf_france[~gdf_france["INSEE_REG"].isin(regions_drom)].copy()
 
 
 # 3- Préparation, sachant que pour la Corse dans ma base je ne peux pas passer par le code Insee, donc je retiens les cas où la région est la Corse
