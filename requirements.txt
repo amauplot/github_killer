@@ -1,5 +1,4 @@
 
-# Pour la conversion des données géographiques des hôpitaux, et selon le tuto de Lino Galiana, il faut les packages : 
 
 py7zr
 geopandas
