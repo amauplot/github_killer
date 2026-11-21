@@ -7,7 +7,9 @@ openpyxl
 tqdm
 s3fs
 PyYAML
-cartiflette
+--upgrade cartiflette
+duckdb=1.5.5
+ipywidgets
 pandas
 fiona
 shapely
@@ -16,4 +18,11 @@ rtree
 contextily
 topojson
 python-calamine
+requests
+matplotlib
+folium
+
+
+
+
 
