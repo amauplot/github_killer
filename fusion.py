@@ -11,7 +11,7 @@ df_commune_revenu_median.rename(columns={df_commune_revenu_median.columns[0]: 'C
 
 # appel des bases des apl et des hopitaux
 apl_fin = pd.read_csv(RACINE / "data/processed/apl_fin.csv", dtype={"COM_INSEE": str})
-hop = pd.read_csv(RACINE / "BASE_loc_hopitaux.csv", dtype={"COM_INSEE": str})
+hop = pd.read_csv(RACINE / "data/processed/BASE_loc_hopitaux.csv", dtype={"COM_INSEE": str})
 
 # -----------------------------------------------------------------------------------------------------------
 # on agrège l'APL pour Paris, Lyon et Marseille
