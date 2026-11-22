@@ -1,3 +1,4 @@
+# à supprimer
 #Obtention de la base fusion en filtrant les villes sans hôpitaux
 
 import pandas as pd
