@@ -3,4 +3,8 @@ FILOSOFI_CC_csv/
 .DS_Store
 
 notebooks/data/
-notebooks/data/
+
+data/dvf_2025_france.csv.gz
+data/dvf_2025_france.csv.gz
+data/communes_2024_50m.geojson
+data/bpe.zip

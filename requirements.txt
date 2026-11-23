@@ -1,5 +1,4 @@
 
-
 py7zr
 geopandas
 openpyxl
@@ -20,8 +19,8 @@ python-calamine
 requests
 matplotlib
 folium
-
-
+mapclassify
+scipy
 
 
 
