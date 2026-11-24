@@ -18,7 +18,6 @@ En conclusion, nous voulions revenir sur plusieurs limites de notre méthode. To
 
 
 Ordre d'exécution du code :   
-1.
 2.
 3.
 4.
