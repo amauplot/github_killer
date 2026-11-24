@@ -1,4 +1,5 @@
 # Conversion de la base de données FILOSOFI
+# ficher en py et pas en ipynb pour pouvoir l'importer dans d'autres scripts
 import os
 import zipfile
 import requests
@@ -42,7 +43,14 @@ def conversion_filosofi_pandas(geo_object, filosofi_measure):
     df = df[df.iloc[:, 1] == geo_object]
     df = df[df.iloc[:, 2] == filosofi_measure]
     
+    # Renommer la 1ère colonne en COM_INSEE
+    premiere_colonne = df.columns[0]
+    df = df.rename(columns={premiere_colonne: 'COM_INSEE'})
+    
     return df
 
-def_departement_revenu_median = conversion_filosofi_pandas('DEP', 'MED_SL')
-print(def_departement_revenu_median.head())
+# Appel de la fonction avec 'COM' et 'MED_SL'
+df_commune_revenu_median = conversion_filosofi_pandas('COM', 'MED_SL')
+
+# Affichage des premières lignes du résultat
+print(df_commune_revenu_median.head())
