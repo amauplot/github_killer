@@ -26,8 +26,8 @@ def telecharger_et_extraire(url, chemin_zip, dossier_destination):
 
 # Définition des chemins et de l'URL
 URL_FILOSOFI = "https://www.insee.fr/fr/statistiques/fichier/8984752/FILOSOFI_CC_csv.zip"
-chemin_zip = "FILOSOFI_CC_csv.zip"
-dossier_extraction = "FILOSOFI_CC_csv"
+chemin_zip = "data/FILOSOFI_CC_csv.zip"
+dossier_extraction = "data/FILOSOFI_CC_csv"
 chemin_csv = os.path.join(dossier_extraction, "DS_FILOSOFI_CC_2023_data.csv")
 
 # Téléchargement et décompression automatique de l'archive
