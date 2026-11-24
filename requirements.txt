@@ -21,6 +21,7 @@ matplotlib
 folium
 mapclassify
 scipy
+seaborn
 
 
 
