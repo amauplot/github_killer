@@ -53,13 +53,14 @@ En conclusion, nous souhaitons revenir sur plusieurs limites de notre méthode. 
 
 Les notebooks doivent être exécutés dans l'ordre suivant :
 
-1. `2.`
-2. `3.`
-3. `4.`
-4. `I.A`
-5. `I.B`
-6. `II.A`
-7. `II.B`
+1.installation des requirements
+2.  `2.`
+3. `3.`
+4. `4.`
+5. `I.A`
+6. `I.B`
+7. `II.A`
+8. `II.B`
 
 ---
 
