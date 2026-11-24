@@ -21,7 +21,6 @@ matplotlib
 folium
 mapclassify
 scipy
-scipy
 
 
 
