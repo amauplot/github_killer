@@ -1,7 +1,7 @@
 import importlib
 import pandas as pd
 from pathlib import Path
-conversion_filosofi_pandas = importlib.import_module("1-2conversion_data").conversion_filosofi_pandas
+conversion_filosofi_pandas = importlib.import_module("conversion_data_filosofi").conversion_filosofi_pandas
 
 # étant donné que les données ne sont pas toutes au même endroit, on redefinit la racine
 RACINE = Path(__file__).resolve().parent
